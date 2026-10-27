@@ -1,0 +1,21 @@
+product_id,product_name,category,unit_cost,unit_price
+P001,Laptop,Computers,26866,180119
+P002,Mouse,Accessories,194619,194620
+P003,Keyboard,Accessories,165370,165371
+P004,Monitor,Computers,112525,325100
+P005,Headphones,Audio,111088,275732
+P006,USB Cable,Accessories,215356,228914
+P007,Printer,Computers,26056,146820
+P008,Webcam,Accessories,175855,289738
+P009,Speaker,Audio,54360,195445
+P010,Flash Drive,Accessories,28073,160760
+P011,Tablet,Computers,133987,163156
+P012,Phone,Phones,244027,244028
+P013,Power Bank,Accessories,185259,185260
+P014,Router,Networking,191479,198558
+P015,Hard Drive,Storage,180781,311882
+P016,SSD,Storage,197585,197586
+P017,Microphone,Audio,130740,301819
+P018,Projector,Computers,36387,291394
+P019,Charger,Accessories,210738,210739
+P020,Smart Watch,Wearables,115344,224765

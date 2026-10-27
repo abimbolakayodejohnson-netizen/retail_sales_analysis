@@ -1,0 +1,301 @@
+customer_id,customer_name,city,region
+C0001,Customer 001,Lagos,South West
+C0002,Customer 002,Port Harcourt,South South
+C0003,Customer 003,Port Harcourt,South South
+C0004,Customer 004,Abuja,North Central
+C0005,Customer 005,Lagos,South West
+C0006,Customer 006,Kano,North West
+C0007,Customer 007,Ibadan,South West
+C0008,Customer 008,Kano,North West
+C0009,Customer 009,Port Harcourt,South South
+C0010,Customer 010,Port Harcourt,South South
+C0011,Customer 011,Port Harcourt,South South
+C0012,Customer 012,Lagos,South West
+C0013,Customer 013,Abuja,North Central
+C0014,Customer 014,Ibadan,South West
+C0015,Customer 015,Ibadan,South West
+C0016,Customer 016,Lagos,South West
+C0017,Customer 017,Ibadan,South West
+C0018,Customer 018,Lagos,South West
+C0019,Customer 019,Port Harcourt,South South
+C0020,Customer 020,Port Harcourt,South South
+C0021,Customer 021,Kano,North West
+C0022,Customer 022,Port Harcourt,South South
+C0023,Customer 023,Abuja,North Central
+C0024,Customer 024,Kano,North West
+C0025,Customer 025,Ibadan,South West
+C0026,Customer 026,Abuja,North Central
+C0027,Customer 027,Kano,North West
+C0028,Customer 028,Abuja,North Central
+C0029,Customer 029,Lagos,South West
+C0030,Customer 030,Ibadan,South West
+C0031,Customer 031,Port Harcourt,South South
+C0032,Customer 032,Lagos,South West
+C0033,Customer 033,Ibadan,South West
+C0034,Customer 034,Lagos,South West
+C0035,Customer 035,Port Harcourt,South South
+C0036,Customer 036,Ibadan,South West
+C0037,Customer 037,Abuja,North Central
+C0038,Customer 038,Abuja,North Central
+C0039,Customer 039,Ibadan,South West
+C0040,Customer 040,Port Harcourt,South South
+C0041,Customer 041,Kano,North West
+C0042,Customer 042,Ibadan,South West
+C0043,Customer 043,Lagos,South West
+C0044,Customer 044,Kano,North West
+C0045,Customer 045,Port Harcourt,South South
+C0046,Customer 046,Port Harcourt,South South
+C0047,Customer 047,Lagos,South West
+C0048,Customer 048,Abuja,North Central
+C0049,Customer 049,Port Harcourt,South South
+C0050,Customer 050,Kano,North West
+C0051,Customer 051,Ibadan,South West
+C0052,Customer 052,Kano,North West
+C0053,Customer 053,Kano,North West
+C0054,Customer 054,Abuja,North Central
+C0055,Customer 055,Kano,North West
+C0056,Customer 056,Abuja,North Central
+C0057,Customer 057,Abuja,North Central
+C0058,Customer 058,Port Harcourt,South South
+C0059,Customer 059,Port Harcourt,South South
+C0060,Customer 060,Lagos,South West
+C0061,Customer 061,Kano,North West
+C0062,Customer 062,Lagos,South West
+C0063,Customer 063,Kano,North West
+C0064,Customer 064,Lagos,South West
+C0065,Customer 065,Port Harcourt,South South
+C0066,Customer 066,Port Harcourt,South South
+C0067,Customer 067,Port Harcourt,South South
+C0068,Customer 068,Port Harcourt,South South
+C0069,Customer 069,Ibadan,South West
+C0070,Customer 070,Port Harcourt,South South
+C0071,Customer 071,Abuja,North Central
+C0072,Customer 072,Port Harcourt,South South
+C0073,Customer 073,Ibadan,South West
+C0074,Customer 074,Ibadan,South West
+C0075,Customer 075,Ibadan,South West
+C0076,Customer 076,Ibadan,South West
+C0077,Customer 077,Lagos,South West
+C0078,Customer 078,Lagos,South West
+C0079,Customer 079,Abuja,North Central
+C0080,Customer 080,Lagos,South West
+C0081,Customer 081,Ibadan,South West
+C0082,Customer 082,Port Harcourt,South South
+C0083,Customer 083,Port Harcourt,South South
+C0084,Customer 084,Ibadan,South West
+C0085,Customer 085,Kano,North West
+C0086,Customer 086,Ibadan,South West
+C0087,Customer 087,Lagos,South West
+C0088,Customer 088,Port Harcourt,South South
+C0089,Customer 089,Ibadan,South West
+C0090,Customer 090,Port Harcourt,South South
+C0091,Customer 091,Ibadan,South West
+C0092,Customer 092,Ibadan,South West
+C0093,Customer 093,Lagos,South West
+C0094,Customer 094,Ibadan,South West
+C0095,Customer 095,Port Harcourt,South South
+C0096,Customer 096,Abuja,North Central
+C0097,Customer 097,Port Harcourt,South South
+C0098,Customer 098,Lagos,South West
+C0099,Customer 099,Abuja,North Central
+C0100,Customer 100,Ibadan,South West
+C0101,Customer 101,Kano,North West
+C0102,Customer 102,Abuja,North Central
+C0103,Customer 103,Abuja,North Central
+C0104,Customer 104,Ibadan,South West
+C0105,Customer 105,Kano,North West
+C0106,Customer 106,Kano,North West
+C0107,Customer 107,Lagos,South West
+C0108,Customer 108,Abuja,North Central
+C0109,Customer 109,Kano,North West
+C0110,Customer 110,Lagos,South West
+C0111,Customer 111,Kano,North West
+C0112,Customer 112,Abuja,North Central
+C0113,Customer 113,Kano,North West
+C0114,Customer 114,Abuja,North Central
+C0115,Customer 115,Ibadan,South West
+C0116,Customer 116,Port Harcourt,South South
+C0117,Customer 117,Lagos,South West
+C0118,Customer 118,Ibadan,South West
+C0119,Customer 119,Ibadan,South West
+C0120,Customer 120,Port Harcourt,South South
+C0121,Customer 121,Kano,North West
+C0122,Customer 122,Port Harcourt,South South
+C0123,Customer 123,Ibadan,South West
+C0124,Customer 124,Ibadan,South West
+C0125,Customer 125,Ibadan,South West
+C0126,Customer 126,Kano,North West
+C0127,Customer 127,Abuja,North Central
+C0128,Customer 128,Lagos,South West
+C0129,Customer 129,Abuja,North Central
+C0130,Customer 130,Lagos,South West
+C0131,Customer 131,Lagos,South West
+C0132,Customer 132,Lagos,South West
+C0133,Customer 133,Port Harcourt,South South
+C0134,Customer 134,Port Harcourt,South South
+C0135,Customer 135,Port Harcourt,South South
+C0136,Customer 136,Ibadan,South West
+C0137,Customer 137,Port Harcourt,South South
+C0138,Customer 138,Lagos,South West
+C0139,Customer 139,Kano,North West
+C0140,Customer 140,Ibadan,South West
+C0141,Customer 141,Kano,North West
+C0142,Customer 142,Lagos,South West
+C0143,Customer 143,Ibadan,South West
+C0144,Customer 144,Port Harcourt,South South
+C0145,Customer 145,Ibadan,South West
+C0146,Customer 146,Ibadan,South West
+C0147,Customer 147,Lagos,South West
+C0148,Customer 148,Abuja,North Central
+C0149,Customer 149,Abuja,North Central
+C0150,Customer 150,Abuja,North Central
+C0151,Customer 151,Port Harcourt,South South
+C0152,Customer 152,Port Harcourt,South South
+C0153,Customer 153,Port Harcourt,South South
+C0154,Customer 154,Abuja,North Central
+C0155,Customer 155,Kano,North West
+C0156,Customer 156,Lagos,South West
+C0157,Customer 157,Abuja,North Central
+C0158,Customer 158,Lagos,South West
+C0159,Customer 159,Abuja,North Central
+C0160,Customer 160,Kano,North West
+C0161,Customer 161,Abuja,North Central
+C0162,Customer 162,Kano,North West
+C0163,Customer 163,Ibadan,South West
+C0164,Customer 164,Port Harcourt,South South
+C0165,Customer 165,Ibadan,South West
+C0166,Customer 166,Abuja,North Central
+C0167,Customer 167,Port Harcourt,South South
+C0168,Customer 168,Kano,North West
+C0169,Customer 169,Abuja,North Central
+C0170,Customer 170,Port Harcourt,South South
+C0171,Customer 171,Abuja,North Central
+C0172,Customer 172,Port Harcourt,South South
+C0173,Customer 173,Port Harcourt,South South
+C0174,Customer 174,Ibadan,South West
+C0175,Customer 175,Port Harcourt,South South
+C0176,Customer 176,Abuja,North Central
+C0177,Customer 177,Lagos,South West
+C0178,Customer 178,Lagos,South West
+C0179,Customer 179,Ibadan,South West
+C0180,Customer 180,Kano,North West
+C0181,Customer 181,Lagos,South West
+C0182,Customer 182,Ibadan,South West
+C0183,Customer 183,Port Harcourt,South South
+C0184,Customer 184,Abuja,North Central
+C0185,Customer 185,Port Harcourt,South South
+C0186,Customer 186,Abuja,North Central
+C0187,Customer 187,Kano,North West
+C0188,Customer 188,Ibadan,South West
+C0189,Customer 189,Ibadan,South West
+C0190,Customer 190,Lagos,South West
+C0191,Customer 191,Ibadan,South West
+C0192,Customer 192,Kano,North West
+C0193,Customer 193,Lagos,South West
+C0194,Customer 194,Port Harcourt,South South
+C0195,Customer 195,Ibadan,South West
+C0196,Customer 196,Port Harcourt,South South
+C0197,Customer 197,Port Harcourt,South South
+C0198,Customer 198,Ibadan,South West
+C0199,Customer 199,Abuja,North Central
+C0200,Customer 200,Port Harcourt,South South
+C0201,Customer 201,Lagos,South West
+C0202,Customer 202,Ibadan,South West
+C0203,Customer 203,Lagos,South West
+C0204,Customer 204,Port Harcourt,South South
+C0205,Customer 205,Port Harcourt,South South
+C0206,Customer 206,Lagos,South West
+C0207,Customer 207,Port Harcourt,South South
+C0208,Customer 208,Ibadan,South West
+C0209,Customer 209,Port Harcourt,South South
+C0210,Customer 210,Lagos,South West
+C0211,Customer 211,Lagos,South West
+C0212,Customer 212,Ibadan,South West
+C0213,Customer 213,Lagos,South West
+C0214,Customer 214,Abuja,North Central
+C0215,Customer 215,Port Harcourt,South South
+C0216,Customer 216,Lagos,South West
+C0217,Customer 217,Port Harcourt,South South
+C0218,Customer 218,Lagos,South West
+C0219,Customer 219,Lagos,South West
+C0220,Customer 220,Ibadan,South West
+C0221,Customer 221,Port Harcourt,South South
+C0222,Customer 222,Lagos,South West
+C0223,Customer 223,Abuja,North Central
+C0224,Customer 224,Kano,North West
+C0225,Customer 225,Kano,North West
+C0226,Customer 226,Ibadan,South West
+C0227,Customer 227,Ibadan,South West
+C0228,Customer 228,Abuja,North Central
+C0229,Customer 229,Port Harcourt,South South
+C0230,Customer 230,Ibadan,South West
+C0231,Customer 231,Abuja,North Central
+C0232,Customer 232,Lagos,South West
+C0233,Customer 233,Lagos,South West
+C0234,Customer 234,Kano,North West
+C0235,Customer 235,Ibadan,South West
+C0236,Customer 236,Ibadan,South West
+C0237,Customer 237,Ibadan,South West
+C0238,Customer 238,Port Harcourt,South South
+C0239,Customer 239,Lagos,South West
+C0240,Customer 240,Lagos,South West
+C0241,Customer 241,Abuja,North Central
+C0242,Customer 242,Ibadan,South West
+C0243,Customer 243,Port Harcourt,South South
+C0244,Customer 244,Ibadan,South West
+C0245,Customer 245,Ibadan,South West
+C0246,Customer 246,Kano,North West
+C0247,Customer 247,Lagos,South West
+C0248,Customer 248,Ibadan,South West
+C0249,Customer 249,Ibadan,South West
+C0250,Customer 250,Ibadan,South West
+C0251,Customer 251,Kano,North West
+C0252,Customer 252,Abuja,North Central
+C0253,Customer 253,Kano,North West
+C0254,Customer 254,Abuja,North Central
+C0255,Customer 255,Ibadan,South West
+C0256,Customer 256,Ibadan,South West
+C0257,Customer 257,Kano,North West
+C0258,Customer 258,Ibadan,South West
+C0259,Customer 259,Abuja,North Central
+C0260,Customer 260,Lagos,South West
+C0261,Customer 261,Abuja,North Central
+C0262,Customer 262,Kano,North West
+C0263,Customer 263,Lagos,South West
+C0264,Customer 264,Kano,North West
+C0265,Customer 265,Ibadan,South West
+C0266,Customer 266,Lagos,South West
+C0267,Customer 267,Abuja,North Central
+C0268,Customer 268,Ibadan,South West
+C0269,Customer 269,Abuja,North Central
+C0270,Customer 270,Lagos,South West
+C0271,Customer 271,Port Harcourt,South South
+C0272,Customer 272,Port Harcourt,South South
+C0273,Customer 273,Lagos,South West
+C0274,Customer 274,Abuja,North Central
+C0275,Customer 275,Abuja,North Central
+C0276,Customer 276,Port Harcourt,South South
+C0277,Customer 277,Port Harcourt,South South
+C0278,Customer 278,Port Harcourt,South South
+C0279,Customer 279,Kano,North West
+C0280,Customer 280,Port Harcourt,South South
+C0281,Customer 281,Abuja,North Central
+C0282,Customer 282,Lagos,South West
+C0283,Customer 283,Port Harcourt,South South
+C0284,Customer 284,Kano,North West
+C0285,Customer 285,Kano,North West
+C0286,Customer 286,Abuja,North Central
+C0287,Customer 287,Abuja,North Central
+C0288,Customer 288,Lagos,South West
+C0289,Customer 289,Lagos,South West
+C0290,Customer 290,Ibadan,South West
+C0291,Customer 291,Ibadan,South West
+C0292,Customer 292,Abuja,North Central
+C0293,Customer 293,Abuja,North Central
+C0294,Customer 294,Kano,North West
+C0295,Customer 295,Ibadan,South West
+C0296,Customer 296,Kano,North West
+C0297,Customer 297,Kano,North West
+C0298,Customer 298,Abuja,North Central
+C0299,Customer 299,Abuja,North Central
+C0300,Customer 300,Kano,North West
