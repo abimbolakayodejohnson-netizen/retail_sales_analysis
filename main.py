@@ -465,10 +465,10 @@ top_products_by_profit = product_summary.sort_values('total_profit', ascending=F
 print(top_products_by_profit[['total_quantity', 'total_profit', 'total_revenue',
                               'profit_margin_pct']].head().round(2))
 # five lowest products
-lowest_five_bottom_products = (top_products_by_profit[
+lowest_products_by_profit = (top_products_by_profit[
     ['total_quantity', 'total_profit', 'total_revenue', 'profit_margin_pct']
 ].tail(5).round(2))
-print(lowest_five_bottom_products)
+print(lowest_products_by_profit)
 print(product_summary.loc[
     [('P002', 'Mouse', 'Accessories'),
      ('P003', 'Keyboard', 'Accessories'),
@@ -502,3 +502,73 @@ print(product_report_rounded.shape)
 check_report = pd.read_csv("outputs/product_performance_report.csv")
 print(check_report.head())
 print(check_report.columns.tolist())
+
+print(product_summary.columns.to_list())
+ #ranking products by revenue
+top_five_by_revenue = (
+    product_summary
+    .sort_values('total_revenue', ascending=False)
+    [['total_quantity', 'total_revenue', 'total_profit', 'profit_margin_pct']]
+    .head(5)
+    .round(2)
+)
+
+print("Top 5 Products by Revenue:")
+print(top_five_by_revenue)
+
+# sorting by profit margin
+top_five_by_margin = (
+    product_summary
+    .sort_values('profit_margin_pct', ascending=False)
+    [['total_quantity', 'total_revenue', 'total_profit', 'profit_margin_pct']]
+    .head(5)
+    .round(2)
+)
+
+top_revenue_ids = top_five_by_revenue.index.get_level_values('product_id')
+top_margin_ids = top_five_by_margin.index.get_level_values('product_id')
+
+common_products = top_revenue_ids.intersection(top_margin_ids)
+
+print("Top five by revenue:", top_revenue_ids.tolist())
+print("Top five by margin:", top_margin_ids.tolist())
+print("Products in both rankings:", common_products.tolist())
+print(
+    product_summary.loc[
+        ('P018', 'Projector', 'Computers'),
+        ['total_quantity', 'total_revenue',
+         'total_cost', 'total_profit', 'profit_margin_pct']
+    ].round(2)
+)
+
+print(
+    top_five_by_revenue[
+        ['total_quantity', 'total_revenue',
+         'total_profit', 'profit_margin_pct']
+    ].to_string()
+)
+
+import matplotlib.pyplot as plt
+
+profit_chart_data = top_five_by_revenue.reset_index()
+
+profit_chart_data['product_label'] = (
+    profit_chart_data['product_name']
+)
+
+plt.figure(figsize=(10, 6))
+
+plt.bar(
+    profit_chart_data['product_label'],
+    profit_chart_data['total_profit']
+)
+
+plt.title('Total Profit: Top 5 Products by Revenue')
+plt.xlabel('Product')
+plt.ylabel('Total Profit (₦)')
+plt.xticks(rotation=30)
+plt.tight_layout()
+
+plt.savefig('charts/top_five_products_profit.png', dpi=300)
+plt.show()
+plt.close()
