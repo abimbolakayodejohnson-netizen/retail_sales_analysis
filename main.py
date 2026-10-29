@@ -385,3 +385,67 @@ monthly_report_rounded = monthly_report.round(2)
 monthly_report_rounded.to_csv("outputs/monthly_performance_report.csv", index_label='month')
 print(monthly_report_rounded.head())
 print(monthly_report_rounded.shape)
+
+# product category performance
+print(sales_df.columns.to_list())
+sales_df_columns = ['order_id', 'order_date', 'customer_id', 'product_id', 'quantity',
+                    'product_name', 'category', 'unit_cost', 'unit_price',
+                    'product_match', 'customer_name', 'city', 'region',
+                    'customer_match', 'revenue', 'total_cost', 'profit', 'month']
+category_summary = sales_df.groupby('category').agg(total_revenue=('revenue', 'sum'),
+                   total_profit=('profit', 'sum'))
+category_summary['profit_margin_pct'] = category_summary['total_profit'] / category_summary['total_revenue'] * 100
+print(category_summary['profit_margin_pct'])
+profit_margin_sorted= category_summary.sort_values('profit_margin_pct', ascending=False)
+print(profit_margin_sorted)
+
+# filtering phone category
+phone_category_filtered = sales_df[sales_df['category'] == 'Phones']
+print(phone_category_filtered[['product_name', 'quantity', 'unit_cost', 'unit_price',
+                               'revenue', 'total_cost', 'profit']])
+print(
+    phone_category_filtered[
+        ['product_name', 'unit_cost', 'unit_price']
+    ].drop_duplicates()
+)
+print(products_df.columns.tolist())
+print(products_df[products_df['product_name'] == 'Phone'])
+products_columns = ['product_id', 'product_name', 'category', 'unit_cost', 'unit_price']
+
+# filtering networking category
+networking_category_filtered = sales_df[sales_df['category'] == 'Networking']
+print(networking_category_filtered[['product_name', 'quantity', 'unit_cost', 'unit_price',
+                               'revenue', 'total_cost', 'profit']])
+
+# investigating the number of products in Networking
+print(
+    networking_category_filtered[
+        ['product_name', 'unit_cost', 'unit_price']
+    ].drop_duplicates()
+)
+#Note: the low margin of Networking is consistent with the cost and price
+#Finding Revenue Contribution by Category
+category_summary['revenue_contribution_pct'] = (category_summary['total_revenue'] /
+                                                category_summary['total_revenue'].sum() * 100)
+print(category_summary['revenue_contribution_pct'])
+#profit contribution by category
+category_summary['profit_contribution_pct'] = (category_summary['total_profit'] /
+                                               category_summary['total_profit'].sum() * 100)
+print(category_summary['profit_contribution_pct'])
+#Contribution gap
+category_summary['contribution_gap_pp'] = (category_summary['profit_contribution_pct'] -
+                                           category_summary['revenue_contribution_pct'])
+print(category_summary['contribution_gap_pp'])
+category_summary = category_summary.sort_values('contribution_gap_pp', ascending=False)
+print(category_summary[['revenue_contribution_pct', 'profit_contribution_pct',
+                        'contribution_gap_pp', 'profit_margin_pct']])
+# category report
+category_report = category_summary[['total_revenue', 'total_profit',
+                                    'revenue_contribution_pct', 'profit_contribution_pct',
+                                    'contribution_gap_pp', 'profit_margin_pct',
+                                    ]]
+category_report_rounded = category_report.round(2)
+category_report_rounded.to_csv("outputs/category_performance_report.csv", index_label="category")
+import os
+
+print(os.path.exists("outputs/category_performance_report.csv"))
