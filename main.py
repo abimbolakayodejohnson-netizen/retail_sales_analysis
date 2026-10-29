@@ -449,3 +449,56 @@ category_report_rounded.to_csv("outputs/category_performance_report.csv", index_
 import os
 
 print(os.path.exists("outputs/category_performance_report.csv"))
+print(sales_df.columns.to_list())
+product_summary = (sales_df.groupby(['product_id', 'product_name', 'category'])
+                   .agg(total_quantity=('quantity','sum'),
+                        total_revenue=('revenue', 'sum'),
+                        total_cost=('total_cost', 'sum'),
+                        total_profit=('profit', 'sum'))
+                   )
+
+# calculating product margin
+product_summary['profit_margin_pct'] = (product_summary['total_profit'] /
+                                        product_summary['total_revenue'] * 100)
+print(product_summary[['total_quantity', 'total_profit', 'total_revenue','profit_margin_pct']].head())
+top_products_by_profit = product_summary.sort_values('total_profit', ascending=False)
+print(top_products_by_profit[['total_quantity', 'total_profit', 'total_revenue',
+                              'profit_margin_pct']].head().round(2))
+# five lowest products
+lowest_five_bottom_products = (top_products_by_profit[
+    ['total_quantity', 'total_profit', 'total_revenue', 'profit_margin_pct']
+].tail(5).round(2))
+print(lowest_five_bottom_products)
+print(product_summary.loc[
+    [('P002', 'Mouse', 'Accessories'),
+     ('P003', 'Keyboard', 'Accessories'),
+     ('P013', 'Power Bank', 'Accessories'),
+     ('P019', 'Charger', 'Accessories'),
+     ('P016', 'SSD', 'Storage')],
+    ['total_revenue', 'total_cost', 'total_profit', 'profit_margin_pct']
+])
+
+# product report data
+# Product performance report
+product_report = product_summary[
+    [
+        'total_quantity',
+        'total_revenue',
+        'total_cost',
+        'total_profit',
+        'profit_margin_pct'
+    ]
+]
+
+print(product_report.head())
+product_report_rounded = product_report.round(2)
+product_report_rounded.to_csv("outputs/product_performance_report.csv", index_label=["product_id",
+                                                                                     "product_name",
+                              "category"])
+import os
+
+print(os.path.exists("outputs/product_performance_report.csv"))
+print(product_report_rounded.shape)
+check_report = pd.read_csv("outputs/product_performance_report.csv")
+print(check_report.head())
+print(check_report.columns.tolist())
