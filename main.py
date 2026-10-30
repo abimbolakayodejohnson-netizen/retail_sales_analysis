@@ -570,5 +570,254 @@ plt.xticks(rotation=30)
 plt.tight_layout()
 
 plt.savefig('charts/top_five_products_profit.png', dpi=300)
-plt.show()
+#plt.show()
 plt.close()
+# business insight analysis
+products_df_columns = products_df.columns.to_list()
+print(products_df_columns)
+lowest_five_ids = (
+    top_products_by_profit
+    .tail(5)
+    .index.get_level_values('product_id')
+)
+
+lowest_five_details = products_df[
+    products_df['product_id'].isin(lowest_five_ids)
+]
+
+print(lowest_five_details)
+# finding profit
+products_df['unit_profit'] = products_df['unit_price'] - products_df['unit_cost']
+products_df['unit_profit_margin_pct'] = (products_df['unit_profit'] /
+                                         products_df['unit_cost'] * 100)
+print(
+    products_df[
+        ['product_name', 'unit_cost', 'unit_price',
+         'unit_profit', 'unit_profit_margin_pct']
+    ].sort_values('unit_profit')
+)
+products_df['check_margin'] = (
+    (products_df['unit_price'] - products_df['unit_cost'])
+    / products_df['unit_price'] * 100
+)
+
+print(
+    products_df[
+        ['product_name', 'unit_cost', 'unit_price',
+         'unit_profit_margin_pct', 'check_margin']
+    ].round(2)
+)
+
+products_df['unit_profit_margin_pct'] = (
+    products_df['check_margin']
+)
+products_df.drop(columns='check_margin', inplace=True)
+print(products_df)
+#finding id of the lowest products
+low_margin_product_ids = products_df.loc[
+    products_df['unit_profit_margin_pct'] < 1,
+    'product_id'
+]
+
+print(low_margin_product_ids.tolist())
+low_margin_sales = sales_df[
+    sales_df['product_id'].isin(low_margin_product_ids)
+]
+
+low_margin_summary = low_margin_sales.agg(
+    total_revenue=('revenue', 'sum'),
+    total_profit=('profit', 'sum')
+)
+
+print(low_margin_summary)
+
+#contribution of low margin products to the business
+total_business_revenue = sales_df['revenue'].sum()
+total_business_profit = sales_df['profit'].sum()
+
+low_margin_revenue_pct = (
+    low_margin_summary.loc['total_revenue', 'revenue']
+    / total_business_revenue * 100
+)
+
+low_margin_profit_pct = (
+    low_margin_summary.loc['total_profit', 'profit']
+    / total_business_profit * 100
+)
+
+print(f"Low-margin revenue contribution: {low_margin_revenue_pct:.2f}%")
+print(f"Low-margin profit contribution: {low_margin_profit_pct:.4f}%")
+
+print("Total business profit:", total_business_profit)
+print("Low-margin profit:", low_margin_summary.loc['total_profit', 'profit'])
+
+print(
+    "Exact profit contribution:",
+    low_margin_summary.loc['total_profit', 'profit']
+    / total_business_profit * 100
+)
+#Findings: Six products (Mouse, Keyboard, Phone, Power Bank,
+# SSD and Charger) account for 25.71% of total revenue
+# but contribute only approximately 0.0003% of total profit.
+# Each product has a unit profit of just ₦1.
+# This indicates a significant pricing and profitability imbalance.
+# Management should review the pricing strategy,
+# investigate whether the unit costs and selling prices are accurate,
+# and consider revising prices where commercially appropriate
+business_summary = sales_df.agg(
+    total_orders=('order_id', 'nunique'),
+    total_quantity_sold=('quantity', 'sum'),
+    total_revenue=('revenue', 'sum'),
+    total_cost=('total_cost', 'sum'),
+    total_profit=('profit', 'sum')
+)
+
+print(business_summary)
+# overall profit margin
+total_revenue = sales_df['revenue'].sum()
+total_profit = sales_df['profit'].sum()
+
+overall_profit_margin = (
+    total_profit / total_revenue * 100
+)
+
+print(f"Total revenue: ₦{total_revenue:,.2f}")
+print(f"Total profit: ₦{total_profit:,.2f}")
+print(f"Overall profit margin: {overall_profit_margin:.2f}%")
+
+#executive business summary
+executive_summary = pd.DataFrame({
+    'metric': [
+        'Total Orders',
+        'Total Quantity Sold',
+        'Total Revenue',
+        'Total Cost',
+        'Total Profit',
+        'Overall Profit Margin'
+    ],
+    'value': [
+        sales_df['order_id'].nunique(),
+        sales_df['quantity'].sum(),
+        total_revenue,
+        sales_df['total_cost'].sum(),
+        total_profit,
+        overall_profit_margin
+    ]
+})
+
+print(executive_summary)
+executive_summary_formatted = executive_summary.copy()
+
+executive_summary_formatted['value'] = (
+    executive_summary_formatted['value'].round(2)
+)
+
+print(executive_summary_formatted.to_string(index=False))
+
+for _, row in executive_summary.iterrows():
+    if row['metric'] == 'Overall Profit Margin':
+        print(f"{row['metric']}: {row['value']:.2f}%")
+    elif row['metric'] in ['Total Revenue', 'Total Cost', 'Total Profit']:
+        print(f"{row['metric']}: ₦{row['value']:,.2f}")
+    else:
+        print(f"{row['metric']}: {row['value']:,.0f}")
+business_findings = pd.DataFrame({
+    'area': [
+        'Monthly Performance',
+        'Category Performance',
+        'Product Performance',
+        'Pricing Investigation'
+    ],
+    'key_finding': [
+        'November recorded the highest monthly profit margin at 43.16%.',
+        'Computers contributed 45.23% of total profit.',
+        'Projector recorded the highest product profit margin at 87.51%.',
+        'Six products generated 25.71% of revenue but only 0.000322% of profit.'
+    ]
+})
+
+print(business_findings.to_string(index=False))
+
+with pd.ExcelWriter(
+    'outputs/retail_business_report.xlsx',
+    engine='openpyxl'
+) as writer:
+
+    executive_summary.to_excel(
+        writer,
+        sheet_name='Executive Summary',
+        index=False
+    )
+
+    business_findings.to_excel(
+        writer,
+        sheet_name='Business Findings',
+        index=False
+    )
+from openpyxl import load_workbook
+from openpyxl.styles import Font, PatternFill, Alignment
+from openpyxl.utils import get_column_letter
+
+# Open the existing workbook
+workbook = load_workbook('outputs/retail_business_report.xlsx')
+
+# Format each worksheet
+for worksheet in workbook.worksheets:
+
+    # Format column headings
+    for cell in worksheet[1]:
+        cell.font = Font(bold=True, color='FFFFFF')
+        cell.fill = PatternFill(
+            fill_type='solid',
+            fgColor='1F4E78'
+        )
+        cell.alignment = Alignment(horizontal='center')
+
+    # Adjust column widths automatically
+    for column in worksheet.columns:
+        max_length = 0
+        column_letter = get_column_letter(column[0].column)
+
+        for cell in column:
+            if cell.value is not None:
+                max_length = max(max_length, len(str(cell.value)))
+
+        worksheet.column_dimensions[column_letter].width = max_length + 4
+
+    # Freeze the header row
+    worksheet.freeze_panes = 'A2'
+
+    # Enable column filters
+    worksheet.auto_filter.ref = worksheet.dimensions
+
+# Save the formatted workbook
+workbook.save('outputs/retail_business_report.xlsx')
+
+# Format Executive Summary worksheet
+summary_sheet = workbook['Executive Summary']
+
+for row in range(2, summary_sheet.max_row + 1):
+
+    metric = summary_sheet.cell(row=row, column=1).value
+    value_cell = summary_sheet.cell(row=row, column=2)
+
+    if metric in ['Total Revenue', 'Total Cost', 'Total Profit']:
+        value_cell.number_format = '₦#,##0.00'
+
+    elif metric == 'Overall Profit Margin':
+        value_cell.number_format = '0.00"%"'
+
+    else:
+        value_cell.number_format = '#,##0'
+workbook.save('outputs/retail_business_report.xlsx')
+check_workbook = load_workbook(
+    'outputs/retail_business_report.xlsx',
+    data_only=True
+)
+
+print("Worksheets:", check_workbook.sheetnames)
+
+for sheet in check_workbook.worksheets:
+    print(f"\n{sheet.title}")
+    print("Rows:", sheet.max_row)
+    print("Columns:", sheet.max_column)
