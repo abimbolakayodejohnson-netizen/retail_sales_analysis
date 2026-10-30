@@ -821,3 +821,86 @@ for sheet in check_workbook.worksheets:
     print(f"\n{sheet.title}")
     print("Rows:", sheet.max_row)
     print("Columns:", sheet.max_column)
+
+#business recommendations
+
+business_recommendations = pd.DataFrame({
+    'area': [
+        'Monthly Performance',
+        'Category Performance',
+        'Product Performance',
+        'Pricing Investigation'
+    ],
+    'evidence': [
+        'November had the highest profit margin at 43.16%, while December recorded the highest revenue and total profit.',
+        'Computers generated 45.23% of total business profit.',
+        'Projector recorded the highest product profit margin at 87.51%.',
+        'Six products generated 25.71% of revenue but only approximately 0.000322% of total profit.'
+    ],
+    'recommendation': [
+        'Investigate the factors behind November’s high margin and December’s higher sales volume to identify practices worth replicating.',
+        'Maintain adequate stock of profitable computer products and monitor their margins to protect this major profit contribution.',
+        'Monitor projector sales, stock availability and profitability to sustain its strong performance.',
+        'Investigate the cost and selling-price records, discounts and transaction data for the six extremely low-margin products before making pricing decisions.'
+    ]
+})
+print(business_recommendations.to_string())
+
+with pd.ExcelWriter(
+    'outputs/retail_business_report.xlsx',
+    engine='openpyxl',
+    mode='a',
+    if_sheet_exists='replace'
+) as writer:
+    business_recommendations.to_excel(
+        writer,
+        sheet_name='Business Recommendations',
+        index=False
+    )
+
+from openpyxl import load_workbook
+from openpyxl.styles import Font, PatternFill, Alignment
+
+workbook = load_workbook('outputs/retail_business_report.xlsx')
+
+worksheet = workbook['Business Recommendations']
+
+# Format the header
+for cell in worksheet[1]:
+    cell.font = Font(bold=True, color='FFFFFF')
+    cell.fill = PatternFill(fill_type='solid', fgColor='1F4E78')
+    cell.alignment = Alignment(horizontal='center', vertical='center')
+
+# Set column widths
+worksheet.column_dimensions['A'].width = 25
+worksheet.column_dimensions['B'].width = 65
+worksheet.column_dimensions['C'].width = 75
+
+# Wrap long text and align content to the top
+for row in worksheet.iter_rows(min_row=2):
+    for cell in row:
+        cell.alignment = Alignment(
+            vertical='top',
+            wrap_text=True
+        )
+
+# Adjust row heights
+for row in range(2, worksheet.max_row + 1):
+    worksheet.row_dimensions[row].height = 65
+
+# Improve worksheet navigation
+worksheet.freeze_panes = 'A2'
+worksheet.auto_filter.ref = worksheet.dimensions
+
+workbook.save('outputs/retail_business_report.xlsx')
+check_workbook = load_workbook(
+    'outputs/retail_business_report.xlsx',
+    data_only=True
+)
+
+print("Worksheets:", check_workbook.sheetnames)
+
+for sheet in check_workbook.worksheets:
+    print(f"\n{sheet.title}")
+    print("Rows:", sheet.max_row)
+    print("Columns:", sheet.max_column)
